@@ -1,0 +1,24 @@
+User class
+    - attributes => name, password
+    - user signs up/logs in 
+    - has many beers & small self-bio
+    - user can logout
+Beer class
+    - attributes => brand, description, rating 
+    - beer belongs to user
+User controller and views
+    -'/users/signup' => renders sign up FROM
+    -'/users/signup' => processes sign up form, creates user, beer portions
+    -'/users/login' => renders login form
+    -'/users/login' => processes login form, post
+    - need to set sessions
+    - user can view their orders '/users/:id/orders'
+
+Beer controller and views
+    - '/beers/new => renders new order form
+    - '/beers' => submits beer 
+    - '/beers' => renders all beers
+    - '/beers/:id => renders one instance(based on id)
+    - '/beers/:id/edit => renders update form for an instance
+    - '/beers/:id => updates instance
+    - '/beers/:id/delete' => deletes instance
