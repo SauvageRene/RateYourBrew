@@ -12,7 +12,7 @@ User controller and views
     -'/users/login' => renders login form
     -'/users/login' => processes login form, post
     - need to set sessions
-    - user can view their orders '/users/:id/orders'
+    - user can view their beers '/users/:id/beers'
 
 Beer controller and views
     - '/beers/new => renders new order form
