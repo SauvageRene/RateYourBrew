@@ -6,7 +6,8 @@ class UserController < ApplicationController
     end
 
     post '/users/signup' do
-        
+        @user = User.create
+
     end
 
 end
