@@ -28,6 +28,10 @@ class BeerController < ApplicationController
         @orders = Order.all #returns an array
 
         erb :'/orders/index'
+    end
+
+    #Update
+    
 
 
 end
