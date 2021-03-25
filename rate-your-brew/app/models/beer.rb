@@ -1,3 +1,3 @@
-class Beer < ActiveRecord::Base[5.2]
+class Beer < ActiveRecord::Base
     belongs_to :user
 end

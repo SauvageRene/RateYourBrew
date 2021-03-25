@@ -1,3 +1,3 @@
-class User < ActiveRecord::Migrations[5.2]
+class User < ActiveRecord::Base
     has_many :beers
 end
