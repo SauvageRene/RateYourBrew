@@ -10,13 +10,13 @@ class BeerController < ApplicationController
         @beer = Beer.create(
             name: params[:name], 
             description: params[:description], 
-            ABVpercentage: params[ABV], 
+            ABVpercentage: params[:abv], 
             rating: params[:rating])
 
-        redirect "orders/#{@beer.id}"
+        redirect "beers/#{@beer.id}"
     end
 
-    get 'orders/:id' do
+    get 'beers/:id' do
         @order = Order.find(params[:id])
 
         erb :'/beers/show'
