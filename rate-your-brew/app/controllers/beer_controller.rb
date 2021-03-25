@@ -16,8 +16,18 @@ class BeerController < ApplicationController
         redirect "beers/#{@beer.id}"
     end
 
+    #READ 
+
     get 'beers/:id' do
         @order = Order.find(params[:id])
 
         erb :'/beers/show'
+    end
+
+    post '/orders' do 
+        @orders = Order.all #returns an array
+
+        erb :'/orders/index'
+
+
 end
