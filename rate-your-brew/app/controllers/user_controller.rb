@@ -10,8 +10,14 @@ class UserController < ApplicationController
             username: params[:username], 
             password: params[:password]
         )
-        sessions[:user_id] = @user.id
+        session[:user_id] = @user.id
         redirect "/users/#{@user.id}"
+    end
+
+    get '/users/login' do 
+    end
+
+    post '/users/login' do 
     end
 
     get '/users/:id' do
