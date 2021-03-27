@@ -48,7 +48,11 @@ class BeerController < ApplicationController
 
         redirect "/beers/#{@beer.id}"
     end
-    
+
+    delete '/beers/:id/delete' do 
+        @beer = Beer.find(params[:id])
+        @beer.delete
+    end
 
 
 end
