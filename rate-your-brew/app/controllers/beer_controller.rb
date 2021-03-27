@@ -24,7 +24,7 @@ class BeerController < ApplicationController
         erb :'/beers/show'
     end
 
-    post '/beers' do 
+    get '/beers' do 
         @beers = Beer.all #returns an array
 
         erb :'/beers/index'
