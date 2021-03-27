@@ -45,6 +45,8 @@ class BeerController < ApplicationController
             abv: params[:abv], 
             rating: params[:rating]
         )
+
+        redirect "/beers/#{@beer.id}"
     end
     
 
