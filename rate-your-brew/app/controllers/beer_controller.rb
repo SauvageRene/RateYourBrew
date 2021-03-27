@@ -3,31 +3,31 @@ class BeerController < ApplicationController
     #Create
 
     get '/beers/new' do 
-        erb :'/orders/new'
+        erb :'/beers/new'
     end
     #Create a new beer and save to the DB
     post '/beers' do
         @beer = Beer.create(
             name: params[:name], 
             description: params[:description], 
-            ABVpercentage: params[:abv], 
+            abv: params[:abv], 
             rating: params[:rating])
 
-        redirect "beers/#{@beer.id}"
+        redirect "/beers/#{@beer.id}"
     end
 
     #READ 
 
-    get 'beers/:id' do
-        @order = Order.find(params[:id])
+    get '/beers/:id' do
+        @beer = Beer.find(params[:id])
 
         erb :'/beers/show'
     end
 
     post '/beers' do 
-        @beers = Order.all #returns an array
+        @beers = Beer.all #returns an array
 
-        erb :'/orders/index'
+        erb :'/beers/index'
     end
 
     #Update
