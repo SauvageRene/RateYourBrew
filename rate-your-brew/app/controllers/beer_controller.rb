@@ -31,6 +31,11 @@ class BeerController < ApplicationController
     end
 
     #Update
+
+    get '/beers/:id/edit' do 
+        @beer = Beer.find(params[:id])
+        erb :'/beers/edit'
+    end
     
 
 

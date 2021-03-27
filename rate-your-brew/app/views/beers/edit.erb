@@ -1,0 +1,10 @@
+<h1> Re-rate your beer </h1>
+
+<form action="/beers/<%= @beer.id %>" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    Name: <input type="text" value="<%= @beer.name %>"name="beer[name]"><br>
+    Description: <textarea name="beer[descrpition]" value="<%= @beer.description %>" placeholder="description"></textarea><br>
+    ABVpercentage: <input type="number" min="1" max="100" value="<%= @beer.abv %>" name="beer[abv]"><br>
+    Rating: <input type="number" min="1" max="10"name="beer[rating]" value="<%= @beer.rating %>"><br>
+    <input type="submit" value = "Rate Beer">
+</form>
