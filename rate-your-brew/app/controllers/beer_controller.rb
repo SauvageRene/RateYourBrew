@@ -36,6 +36,16 @@ class BeerController < ApplicationController
         @beer = Beer.find(params[:id])
         erb :'/beers/edit'
     end
+
+    post '/orders/:id' do
+        @beer = Beer.find(params[:id])
+        @beer.update(
+            name: params[:name], 
+            description: params[:description], 
+            abv: params[:abv], 
+            rating: params[:rating]
+        )
+    end
     
 
 
