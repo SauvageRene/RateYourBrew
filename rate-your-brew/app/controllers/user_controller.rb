@@ -6,7 +6,7 @@ class UserController < ApplicationController
     end
 
     post '/users/signup' do
-        @user = User.create(
+        @user = User.new(
             username: params[:username], 
             password: params[:password]
         )
@@ -19,6 +19,7 @@ class UserController < ApplicationController
     end
 
     post '/users/login' do 
+        @user = User.find_by(username: params[:username])
     end
 
     get '/users/:id' do

@@ -11,4 +11,4 @@ ActiveRecord::Base.establish_connection(
 require './app/controllers/application_controller'
 require_all 'app'
 
-ActiveRecord::Base.logger = Logger.new(STDOUT)
+ActiveRecord::Base.logger = Logger.new(STDOUT )
