@@ -5,15 +5,27 @@ class BeerController < ApplicationController
     get '/beers/new' do 
         erb :'/beers/new'
     end
+
+    get '/beers' do 
+        @beers = Beer.all #returns an array
+
+        erb :'/beers/index'
+    end
     #Create a new beer and save to the DB
     post '/beers' do
+        redirect_if_not_logged_in
         @beer = Beer.create(
             name: params[:name], 
             description: params[:description], 
             abv: params[:abv], 
             rating: params[:rating])
 
-        redirect "/beers/#{@beer.id}"
+        # redirect "/beers/#{@beer.id}"
+        if @beer.save
+            redirect "/beers/#{@beer.id}"
+        else
+            "Error #{beer.errors.full_messages.join(", ")}"
+        end
     end
 
     #READ 
@@ -24,11 +36,11 @@ class BeerController < ApplicationController
         erb :'/beers/show'
     end
 
-    get '/beers' do 
-        @beers = Beer.all #returns an array
+    # get '/beers' do 
+    #     @beers = Beer.all #returns an array
 
-        erb :'/beers/index'
-    end
+    #     erb :'/beers/index'
+    # end
 
     #Update
 

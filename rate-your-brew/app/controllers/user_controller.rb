@@ -7,7 +7,7 @@ class UserController < ApplicationController
     end
 
     post '/users/signup' do
-        @user = User.new(
+        @user = User.create(
             username: params[:username], 
             password: params[:password]
         )
@@ -16,6 +16,8 @@ class UserController < ApplicationController
     end
 
     get '/users/login' do 
+        redirect_if_logged_in
+        
         erb :'/users/login'
     end
 
