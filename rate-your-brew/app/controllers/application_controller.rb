@@ -30,6 +30,7 @@ class ApplicationController < Sinatra::Base
     def redirect_if_logged_in
       redirect "/users/show" if logged_in?
     end
+    
   end
 
 end

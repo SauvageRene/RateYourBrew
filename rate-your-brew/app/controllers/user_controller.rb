@@ -17,7 +17,7 @@ class UserController < ApplicationController
 
     get '/users/login' do 
         redirect_if_logged_in
-        
+
         erb :'/users/login'
     end
 
@@ -30,7 +30,12 @@ class UserController < ApplicationController
         erb :'/users/show'
     end
 
-
-
+    delete '/logout' do 
+        redirect_if_not_logged_in
+        #logout a user
+        # session.clear
+        session.delete("user_id")
+        redirect "/users/login"
+    end
 
 end

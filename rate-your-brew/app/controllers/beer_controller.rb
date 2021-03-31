@@ -8,7 +8,7 @@ class BeerController < ApplicationController
 
     get '/beers' do 
         @beers = Beer.all #returns an array
-
+        
         erb :'/beers/index'
     end
     #Create a new beer and save to the DB
