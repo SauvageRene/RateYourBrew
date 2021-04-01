@@ -8,7 +8,7 @@
     <title>RateYourBrew</title>
 </head>
 <body>
-#<!------- Start Navbar --------> 
+<!------- Start Navbar --------> 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Home</a>
@@ -19,20 +19,20 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <% if logged_in? %>
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/users/login">Login</a>
+                    <a class="nav-link active fs-4" aria-current="page" href="/users/login">Login</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/beers">All Brew</a>
+                    <a class="nav-link active fs-4" href="/beers">All Brew</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/beers/new">Rate Your Brew</a>
+                    <a class="nav-link active fs-4" href="/beers/new">Rate Your Brew</a>
                     </li>
                 <% else %>
                     <li class="nav-item">
-                    <a class="nav-link" href="/users/signup">Signup</a>
+                    <a class="nav-link active fs-4" href="/users/signup">Signup</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/users/login">Login</a>
+                    <a class="nav-link active fs-4" href="/users/login">Login</a>
                     </li>
                 <% end%>
             </ul>
@@ -43,15 +43,23 @@
             </div>
         </div>
         </nav>
-        #<!------- End Navbar -------->
+    <!------- End Navbar -------->
+
+    <div class="text-danger">
+    <%= flash[:error] %>
+    </div> 
+
+    <div class="container-sm">
+
     <%= yield %>
     <% if logged_in? %>
         <br><br>
-        <form action="/users/logout" method="post">
+        <form action="/logout" method="post">
             <input type="hidden" name="_method" value="delete">
             <input type="submit" value="Logout">
         </form>
     <% end %>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
 </body>

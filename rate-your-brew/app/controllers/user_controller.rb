@@ -42,7 +42,7 @@ class UserController < ApplicationController
         redirect_if_not_logged_in
         #logout a user
         # session.clear
-        session.delete("user_id")
+        session.delete("user.id")
         redirect "/users/login"
     end
 
