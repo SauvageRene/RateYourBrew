@@ -22,7 +22,15 @@ class UserController < ApplicationController
     end
 
     post '/users/login' do 
-        @user = User.find_by(username: params[:username])
+        user = User.find_by(username: params[:username])
+
+        if user && user.authenticate(params["username"]["password"])
+            session["user_id"] = user.id
+            redirect "/beers"
+        # if user not valid, send back to /login
+        else
+            redirect "/users/login"
+        end
     end
 
     get '/users/:id' do
