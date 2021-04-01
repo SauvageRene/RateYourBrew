@@ -14,11 +14,9 @@ class BeerController < ApplicationController
     #Create a new beer and save to the DB
     post '/beers' do
         redirect_if_not_logged_in
-        @beer = Beer.create(
-            name: params[:name], 
-            description: params[:description], 
-            abv: params[:abv], 
-            rating: params[:rating])
+        
+        @beer = Beer.new(
+             params[:beer])
 
         # redirect "/beers/#{@beer.id}"
         if @beer.save
@@ -64,9 +62,10 @@ class BeerController < ApplicationController
 
     # Delete
 
-    delete '/beers/:id/delete' do 
+    delete '/beers/:id' do 
         @beer = Beer.find(params[:id])
-        @beer.delete
+        @beer.destroy
+        redirect "/beers"
     end
 
 

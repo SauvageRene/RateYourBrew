@@ -30,7 +30,7 @@ class UserController < ApplicationController
     post '/users/login' do 
         @user = User.find_by(username: params[:username])
 
-        if @user && @user.authenticate(params["username"]["password"])
+        if @user && @user.authenticate(params["password"])
             session["user_id"] = @user.id
             redirect "/users/#{@user.id}"
         # if user not valid, send back to /login
@@ -42,14 +42,16 @@ class UserController < ApplicationController
 
     get '/users/:id' do
         @user = User.find(params[:id])
+
         erb :'/users/show'
     end
 
-    delete '/logout' do 
+    post '/logout' do 
+
         redirect_if_not_logged_in
         #logout a user
         # session.clear
-        session.delete("user_id")
+        session.clear
         redirect "/"
     end
 
