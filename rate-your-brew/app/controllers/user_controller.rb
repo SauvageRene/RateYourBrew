@@ -16,7 +16,7 @@ class UserController < ApplicationController
         session[:user_id] = @user.id
         redirect "/users/#{@user.id}"
         else
-            flash.now[:error] = "Something went wrong, please try again"
+            flash[:error] = "Username unavailable"
             erb :'/users/signup'
         end
     end
@@ -35,7 +35,7 @@ class UserController < ApplicationController
             redirect "/users/#{@user.id}"
         # if user not valid, send back to /login
         else
-            flash.now[:error] = "Incorrect username or password, please try again."
+            flash[:error] = "Incorrect username or password, please try again."
             redirect "/users/login"
         end
     end
