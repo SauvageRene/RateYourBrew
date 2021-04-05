@@ -57,8 +57,8 @@
     </div>
     <% if logged_in? %>
         <br><br>
-        <form action="/logout" method="post">
-            <input type="hidden" name="_method" value="delete">
+        <form action="/logout" method="get">
+            
             <input type="submit" value="Logout">
         </form>
     <% end %>

@@ -46,13 +46,12 @@ class UserController < ApplicationController
         erb :'/users/show'
     end
 
-    post '/logout' do 
-
+    get '/logout' do 
         redirect_if_not_logged_in
         #logout a user
         # session.clear
         session.clear
-        redirect "/"
+        redirect "/users/login"
     end
 
 end
