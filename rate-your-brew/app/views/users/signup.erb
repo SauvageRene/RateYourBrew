@@ -5,8 +5,9 @@
     Password: <input type='password' name='password'><br>
     <input type='submit'>
 </form>
+
 <div class="text-danger">
-<%if flash[:error] %>
-<h3><%= flash[:error] %></h3>
-<% end %>
+    <%if flash[:error] %>
+ <h3><%= flash[:error] %></h3>
+    <% end %>
 </div>

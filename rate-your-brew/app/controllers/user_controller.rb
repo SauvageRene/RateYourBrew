@@ -41,8 +41,7 @@ class UserController < ApplicationController
     end
 
     get '/users/:id' do
-        @user = User.find(params[:id])
-
+        current_user
         erb :'/users/show'
     end
 
