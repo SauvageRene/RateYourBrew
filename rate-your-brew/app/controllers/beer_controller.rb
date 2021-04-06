@@ -7,7 +7,8 @@ class BeerController < ApplicationController
     end
 
     get '/beers' do 
-        @beers = Beer.all #returns an array
+
+        @beers = current_user.beers #returns an array
         
         erb :'/beers/index'
     end
@@ -15,8 +16,9 @@ class BeerController < ApplicationController
     post '/beers' do
         redirect_if_not_logged_in
         
-        @beer = Beer.new(
+        @beer = current_user.beers.build(
              params[:beer])
+        
 
         # redirect "/beers/#{@beer.id}"
         if @beer.save
@@ -30,6 +32,7 @@ class BeerController < ApplicationController
     #READ 
 
     get '/beers/:id' do
+        redirect_if_not_authorized
         @beer = Beer.find(params[:id])
 
         erb :'/beers/show'
@@ -44,12 +47,13 @@ class BeerController < ApplicationController
     #Update
 
     get '/beers/:id/edit' do 
-        @beer = Beer.find(params[:id])
+        redirect_if_not_authorized
+        
         erb :'/beers/edit'
     end
 
-    post '/beers/:id' do
-        @beer = Beer.find(params[:id])
+    post '/beers/:id' do #change to a patch route
+        redirect_if_not_authorized
         @beer.update(
             name: params[:name], 
             description: params[:description], 
@@ -63,9 +67,18 @@ class BeerController < ApplicationController
     # Delete
 
     delete '/beers/:id' do 
-        @beer = Beer.find(params[:id])
+        redirect_if_not_authorized
         @beer.destroy
         redirect "/beers"
+    end
+
+    private 
+
+    def redirect_if_not_authorized
+        @beer = Beer.find_by_id(params[:id])
+        if @beer.user_id != session["user_id"]
+            redirect "/beers"
+        end
     end
 
 

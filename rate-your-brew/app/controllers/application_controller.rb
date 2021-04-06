@@ -31,6 +31,10 @@ class ApplicationController < Sinatra::Base
     def redirect_if_logged_in
       redirect "/users/show" if logged_in?
     end
+
+    def total_beers
+      beer = Beer.all.length
+    end
     
   end
 
