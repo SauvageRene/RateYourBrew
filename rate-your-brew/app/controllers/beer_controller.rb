@@ -59,14 +59,19 @@ class BeerController < ApplicationController
 
     patch '/beers/:id' do 
         redirect_if_not_authorized
-        @beer.update(
-            name: params[:name], 
-            description: params[:description], 
-            abv: params[:abv], 
-            rating: params[:rating]
-        )
 
-        redirect "/beers/#{@beer.id}"
+
+        if @beer.update(params[:beer])
+            redirect "/beers/#{@beer.id}"
+        # @beer.update(
+        #     name: params[:name], 
+        #     description: params[:description], 
+        #     abv: params[:abv], 
+        #     rating: params[:rating]
+        # )
+        else
+            redirect "/beers/#{@beer.id}/edit"
+        end
     end
 
     # Delete
