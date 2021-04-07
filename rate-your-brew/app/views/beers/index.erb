@@ -5,9 +5,10 @@
     <li>
     Beer id: <%= beer.id %><br>
     Name: <%= beer.name %><br>
-    Descrpition: <%= beer.description %><br>
+    Description: <%= beer.description %><br>
     ABV: <%= beer.abv %><br>
-    Rating: <% beer.rating %><br>
+    Rating: <%= beer.rating %><br>
+    <a href="/beers/<%= beer.id %>/edit"> Re-Rate Your Brew</a>
     </li>
 <% end %>
 </ul>

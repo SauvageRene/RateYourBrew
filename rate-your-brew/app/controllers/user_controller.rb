@@ -41,6 +41,7 @@ class UserController < ApplicationController
     end
 
     get '/users/:id' do
+        redirect_if_not_logged_in
         current_user
         erb :'/users/show'
     end

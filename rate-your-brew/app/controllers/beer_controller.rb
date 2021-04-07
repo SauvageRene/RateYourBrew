@@ -3,10 +3,12 @@ class BeerController < ApplicationController
     #Create
 
     get '/beers/new' do 
+        redirect_if_not_logged_in
         erb :'/beers/new'
     end
 
     get '/beers' do 
+        redirect_if_not_logged_in
 
         @beers = current_user.beers #returns an array
         
@@ -32,6 +34,7 @@ class BeerController < ApplicationController
     #READ 
 
     get '/beers/:id' do
+        redirect_if_not_logged_in
         redirect_if_not_authorized
         @beer = Beer.find(params[:id])
 
@@ -47,12 +50,13 @@ class BeerController < ApplicationController
     #Update
 
     get '/beers/:id/edit' do 
+        redirect_if_not_logged_in
         redirect_if_not_authorized
         
         erb :'/beers/edit'
     end
 
-    post '/beers/:id' do #change to a patch route
+    patch '/beers/:id' do 
         redirect_if_not_authorized
         @beer.update(
             name: params[:name], 

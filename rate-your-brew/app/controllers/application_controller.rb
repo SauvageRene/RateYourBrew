@@ -35,6 +35,16 @@ class ApplicationController < Sinatra::Base
     def total_beers
       beer = Beer.all.length
     end
+
+    def latest_beer
+      display_beer = current_user.beers.last
+
+      if display_beer == nil 
+        "No Recently Rated Beers"
+      else
+        display_beer.name
+      end
+    end
     
   end
 
