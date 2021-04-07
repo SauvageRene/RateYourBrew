@@ -27,7 +27,8 @@ class BeerController < ApplicationController
             redirect "/beers/#{@beer.id}"
         else
             flash[:error] = 
-            "Error #{beer.errors.full_messages.join(", ")}"
+            "Error #{@beer.errors.full_messages.join(", ")}"
+            erb :'/beers/new'
         end
     end
 

@@ -8,3 +8,9 @@
     <input type="number" min="1" max="10"name="beer[rating]" placeholder="Rating"><br><br>
     <input type="submit" value = "Rate Beer">
 </form>
+
+<div class="text-danger">
+    <%if flash[:error] %>
+ <h3><%= flash[:error] %></h3>
+    <% end %>
+</div>
