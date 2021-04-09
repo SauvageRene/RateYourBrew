@@ -11,6 +11,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
+    redirect_if_not_logged_in
     erb :welcome
   end
 
@@ -40,7 +41,7 @@ class ApplicationController < Sinatra::Base
       display_beer = current_user.beers.last
 
       if display_beer == nil 
-        "No Recently Rated Beers"
+        "You haven't rated any beers yet!"
       else
         display_beer.name
       end
