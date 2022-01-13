@@ -1,5 +1,5 @@
 # RateYourBrew
-Sinatra application, Where users are created with a small side bar and links and they rate drinks based on certain things. 
+Sinatra application, Where users are created with a small side bar and links and they rate drinks based on Alc %, taste, etc
 
 ## Installation
 Fork and clone the lab from github, once cloned run
